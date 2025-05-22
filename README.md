@@ -12,4 +12,4 @@ This project is about the snake game. Players can use buttons to control the mov
 7. 失敗時則會使用蜂鳴器發出撞擊聲音，提醒玩家在本關輸掉，TM1637顯示over，當按下上下左右任意按鈕則**重置遊戲**。  
 8. 闖關成功則會顯示**WIN於TM1637**上，並調整等級，而蜂鳴器會發出**勝利的聲音**  
 <br>
-![S__28172290](https://github.com/user-attachments/assets/047948e5-cdbb-4516-9b3f-e0088c22e08c)
+![S__28172290](https://github.com/user-attachments/assets/b9f86e2e-e098-4eaa-ad8d-bb5389f6fce8)
