@@ -39,6 +39,7 @@ Point food;
 // 初始化level
 int level = 1;
 
+bool gameStarted = false;
 bool gameOver = false;
 bool gameClear = false;
 
@@ -102,8 +103,11 @@ void setup() {
 }
 
 void loop() { // loop持續判斷
-  updateDifficulty();
-if (isFoodBlinking) {
+  if (gameStarted == false){
+    updateDifficulty();
+  }
+  
+  if (isFoodBlinking) {
     unsigned long now = millis();
 
     if (now - lastBlinkTime >= moveInterval) {
@@ -277,6 +281,10 @@ void eatFood() {
   
   foodEatenSinceLastLevelUp++;
 
+  if (!gameStarted) {
+    gameStarted = true;
+  }
+
   // 判斷達到閃爍條件
   if (foodEatenSinceLastLevelUp >= autoLevelupThreshold) {
     // 進入閃爍模式
@@ -397,6 +405,7 @@ void waitForRestart() {
   // 顯示簡單的提示（例如閃爍特定LED）
   bool blinkState = false;
   unsigned long lastBlinkTime = 0;
+  gameStarted = false;
   
   // 持續檢測按鈕輸入
   while (true) {
@@ -447,6 +456,7 @@ void resetGame() {
   // 重置遊戲狀態
   gameOver = false;
   gameClear = false;
+  gameStarted = true;
 
   // 重置食物相關變數
   isFoodBlinking = false;
@@ -454,8 +464,7 @@ void resetGame() {
   blinkStep = 0;
   
   // 更新難度
-  level = readDifficulty();
-  currentLevel = level;
+  level = currentLevel;
   showDifficultyLevel(level);
   moveInterval = map(level, 1, 9, 600, 100);
   
